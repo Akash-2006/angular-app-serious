@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="card-wrapper">
+    <!-- Name Input Form -->
+    <div *ngIf="!userName" class="card">
+      <h1 class="title">Welcome!</h1>
+      <p class="subtitle">Please enter your name to continue</p>
+      <form #nameForm="ngForm" (ngSubmit)="onNameSubmit(nameInput.value)">
+        <input
+          #nameInput
+          type="text"
+          placeholder="Enter your name"
+          class="input-field"
+          required
+        />
+        <button type="submit" class="submit-btn">Continue</button>
+      </form>
+    </div>
+
+    <!-- Loading/Welcome Message -->
+    <div *ngIf="userName && !showVideo" class="card">
+      <h1 class="title">Hello, {{ userName }}!</h1>
+      <p class="subtitle">We have something special for you...</p>
+      <div class="spinner-container">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <!-- Rick Roll Video -->
+    <div *ngIf="showVideo" class="video-card">
+      <div class="video-header">
+        <h1 class="video-title">🎉 Surprise {{ userName }}! 🎉</h1>
+        <p class="video-subtitle">You've been Rick Rolled!</p>
+      </div>
+      <div class="video-container">
+        <iframe
+          class="video-iframe"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1&mute=1&controls=1&loop=1&playlist=dQw4w9WgXcQ&rel=0"
+          title="Never Gonna Give You Up"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+      <div class="video-fallback">
+        <p>🎵 Click the video above to start the Rick Roll! 🎵</p>
+        <button (click)="openYouTube()" class="youtube-btn">
+          🎵 PLAY RICK ROLL 🎵
+        </button>
+        <p>
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+            class="video-link"
+            >Or click here for YouTube link</a
+          >
+        </p>
+      </div>
+      <div class="video-footer">
+        <p class="footer-title">Never gonna give you up! 🎵</p>
+        <p class="footer-subtitle">You just got Rick Rolled by Rick Astley!</p>
+        <button (click)="showVideo = false; userName = ''" class="retry-btn">
+          Try Again?
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

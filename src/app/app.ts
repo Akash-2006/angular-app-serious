@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RickrollComponent } from './rickroll/rickroll.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RickrollComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
